@@ -33,15 +33,15 @@ When you don't set the `UID` and `GID` the files will be owned by `G-/UID=1000`.
 To archive the best performance we will mount the X11 directory, DRI and KVM device of the host to get full hardware accerlation:
 
 ```shell
-xhost local:$USER && docker run --rm -ti -e UID=$(id -u) -e GID=$(id -g) -p 42000:42000 --workdir /project --device /dev/kvm --device /dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY -v "$PWD":/project --entrypoint flutter-android-emulator  matspfeiffer/flutter
+xhost local:$USER && docker run --rm -ti -e UID=$(id -u) -e GID=$(id -g) -p 42001:42001 --workdir /project --device /dev/kvm --device /dev/dri:/dev/dri -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY -v "$PWD":/project --entrypoint flutter-android-emulator  matspfeiffer/flutter
 ```
 
 ### flutter-web (beta only)
 
-You app will be served on localhost:8090:
+You app will be served on localhost:8080:
 
 ```shell
-docker run --rm -ti -e UID=$(id -u) -e GID=$(id -g) -p 42000:42000 -p 8090:8090  --workdir /project -v "$PWD":/project --entrypoint flutter-web matspfeiffer/flutter:beta
+docker run --rm -ti -e UID=$(id -u) -e GID=$(id -g) -p 42001:42001 -p 8080:8080  --workdir /project -v "$PWD":/project --entrypoint flutter-web matspfeiffer/flutter:beta
 ```
 
 ## VSCode devcontainer
